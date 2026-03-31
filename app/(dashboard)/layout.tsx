@@ -36,7 +36,7 @@ export default function DashboardLayout({
   if (!user) return null
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50">
       {/* Mobile menu button */}
       <div className="lg:hidden fixed top-4 left-4 z-[100]">
         <button
@@ -47,16 +47,16 @@ export default function DashboardLayout({
         </button>
       </div>
 
-      {/* Sidebar - Higher z-index than overlay */}
+      {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 z-[70] w-64 h-full transform transition-transform duration-300 ease-in-out ${
+        className={`fixed lg:relative top-0 left-0 z-[70] w-64 h-full transform transition-transform duration-300 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:relative lg:translate-x-0 lg:z-0`}
+        } lg:translate-x-0`}
       >
         <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
       </div>
 
-      {/* Overlay - Lower z-index than sidebar */}
+      {/* Overlay */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-[60] lg:hidden"
@@ -65,8 +65,8 @@ export default function DashboardLayout({
       )}
 
       {/* Main Content Area */}
-      <div className="lg:ml-64">
-        <main className="p-4 sm:p-6 lg:p-8 pt-16 lg:pt-8">
+      <div className="flex-1 min-h-screen">
+        <main className="p-4 sm:p-6 lg:p-8">
           {children}
         </main>
       </div>
