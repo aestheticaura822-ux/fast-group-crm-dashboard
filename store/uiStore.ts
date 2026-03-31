@@ -28,16 +28,18 @@ export const useUIStore = create<UIStore>((set) => ({
   
   setTheme: (theme) => set({ theme }),
   
-  addNotification: (notification) => set((state) => ({
-    notifications: [
-      {
-        id: Math.random().toString(36).substring(7),
-        ...notification,
-        read: false
-      },
-      ...state.notifications
-    ]
-  })),
+addNotification: (notification: any) => set((state) => ({
+  notifications: [
+    {
+      id: Math.random().toString(36).substring(7),
+      type: notification.type || 'info',
+      message: notification.message || '',
+      read: false,
+      ...notification
+    },
+    ...state.notifications
+  ]
+}))
   
   markNotificationAsRead: (id) => set((state) => ({
     notifications: state.notifications.map(n =>
