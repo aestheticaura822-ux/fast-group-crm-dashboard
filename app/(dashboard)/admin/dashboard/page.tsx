@@ -110,7 +110,7 @@ export default function AdminDashboard() {
   const loadDashboardData = useCallback(async () => {
     try {
       const statsData = await getDashboardStats()
-      setStats(statsData)
+setStats(statsData as any)
       const leadsData = await getLeads({ limit: 10, sort: 'created_at:desc' })
       setLeads(leadsData.data || [])
     } catch (error) {
