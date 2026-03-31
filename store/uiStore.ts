@@ -39,7 +39,7 @@ addNotification: (notification: any) => set((state) => ({
     },
     ...state.notifications
   ]
-}))
+})),
   
   markNotificationAsRead: (id) => set((state) => ({
     notifications: state.notifications.map(n =>
